@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Michael Aprat — Mechanical Engineering Portfolio</title>
+<meta name="description" content="Mechanical Engineering portfolio of Michael Aprat, Georgia Tech. FEA/CAE, Simulation, UAV Systems, Machine Design.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+:root{
+  --bg:#f9f7f4;--white:#ffffff;--ink:#1a1814;--mid:#5a5550;--dim:#a09a94;
+  --rule:#e0dbd4;--tag:#f0ede8;--accent:#c8502a;--accent-lt:#fdf2ee;
+  --green:#2d6a4f;--green-lt:#edf5f0;
+  --serif:'DM Serif Display',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+  --r:3px;--nav:56px;
+}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1060px;margin:0 auto;padding:0 44px}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:200;height:var(--nav);background:rgba(249,247,244,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;padding:0 44px}
+.nav-name{font-family:var(--serif);font-size:17px;color:var(--ink);text-decoration:none;letter-spacing:-.01em}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{font-size:13px;font-weight:400;color:var(--mid);text-decoration:none;letter-spacing:.02em;transition:color .15s}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{font-weight:500!important;color:var(--white)!important;background:var(--ink);padding:7px 18px!important;border-radius:var(--r);transition:background .15s!important}
+.nav-cta:hover{background:var(--accent)!important}
+
+/* HERO */
+#hero{padding:84px 0 68px;border-bottom:1px solid var(--rule)}
+.hero-grid{display:grid;grid-template-columns:1fr 284px;gap:64px;align-items:start}
+.hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
+h1{font-family:var(--serif);font-size:clamp(42px,5.5vw,66px);font-weight:400;line-height:1.0;letter-spacing:-.02em;color:var(--ink);margin-bottom:20px}
+.hero-desc{font-size:15px;font-weight:300;color:var(--mid);line-height:1.8;max-width:480px;margin-bottom:30px}
+.hero-desc strong{color:var(--ink);font-weight:500}
+.hero-btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn{font-size:13px;font-weight:500;text-decoration:none;padding:10px 26px;border-radius:var(--r);letter-spacing:.02em;transition:all .15s;display:inline-block}
+.btn-dark{background:var(--ink);color:var(--white)}
+.btn-dark:hover{background:var(--accent)}
+.btn-outline{color:var(--ink);border:1px solid var(--rule);background:transparent}
+.btn-outline:hover{border-color:var(--mid)}
+
+/* PROFILE CARD */
+.profile-card{background:var(--white);border:1px solid var(--rule);border-radius:var(--r);overflow:hidden}
+.profile-card-head{background:var(--ink);color:var(--white);padding:11px 16px;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+.profile-row{display:flex;justify-content:space-between;align-items:center;padding:9px 16px;border-bottom:1px solid var(--rule);font-size:13px}
+.profile-row:last-child{border-bottom:none}
+.pk{color:var(--dim);font-weight:400}
+.pv{color:var(--ink);font-weight:500;text-align:right}
+.pv.open{color:var(--green)}
+
+/* SECTIONS */
+section{padding:76px 0;border-bottom:1px solid var(--rule)}
+.sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:36px}
+.sec-num{font-size:11px;font-weight:500;color:var(--dim);letter-spacing:.07em}
+h2{font-family:var(--serif);font-size:clamp(24px,2.8vw,36px);font-weight:400;color:var(--ink);letter-spacing:-.01em}
+
+/* BADGES */
+.badge{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;padding:2px 9px;border-radius:var(--r)}
+.badge-done{background:var(--tag);color:var(--dim)}
+.badge-wip{background:var(--green-lt);color:var(--green)}
+
+/* EXPERIENCE */
+.exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.exp-card{background:var(--white);border:1px solid var(--rule);border-radius:var(--r);padding:18px 20px;border-top:2px solid var(--accent)}
+.exp-org{font-size:14px;font-weight:600;margin-bottom:2px}
+.exp-role{font-size:12px;color:var(--accent);font-weight:500;margin-bottom:2px}
+.exp-date{font-size:11px;color:var(--dim);margin-bottom:10px}
+.exp-desc{font-size:12px;color:var(--mid);line-height:1.65;font-weight:300}
+
+/* SKILLS */
+.skills-wrap{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:var(--r);overflow:hidden}
+.skill-row{background:var(--white);padding:14px 18px;display:flex;justify-content:space-between;align-items:center;transition:background .12s}
+.skill-row:hover{background:var(--bg)}
+.skill-name{font-size:14px;font-weight:500}
+.skill-right{display:flex;align-items:center;gap:8px}
+.pips{display:flex;gap:3px}
+.pip{width:6px;height:6px;border-radius:50%;background:var(--rule)}
+.pip.on{background:var(--ink)}
+.skill-level{font-size:10px;font-weight:600;color:var(--dim);letter-spacing:.05em;width:22px;text-align:right}
+
+/* PROJECTS */
+.filter-bar{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:28px}
+.filt{font-family:var(--sans);font-size:12px;font-weight:500;color:var(--mid);background:var(--white);border:1px solid var(--rule);padding:5px 15px;border-radius:var(--r);cursor:pointer;transition:all .15s}
+.filt:hover{border-color:var(--mid);color:var(--ink)}
+.filt.active{background:var(--ink);color:var(--white);border-color:var(--ink)}
+.proj-list{display:flex;flex-direction:column;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:var(--r);overflow:hidden}
+.proj-item{background:var(--white);transition:background .12s}
+.proj-item:hover,.proj-item.expanded{background:var(--bg)}
+.proj-summary{display:grid;grid-template-columns:46px 1fr 36px;cursor:pointer}
+.proj-n{display:flex;align-items:flex-start;justify-content:center;padding:18px 0;font-size:11px;font-weight:500;color:var(--dim);border-right:1px solid var(--rule)}
+.proj-body{padding:16px 22px}
+.proj-header{display:flex;align-items:center;gap:9px;margin-bottom:4px;flex-wrap:wrap}
+.proj-title{font-size:15px;font-weight:600;color:var(--ink)}
+.proj-tag{font-size:11px;color:var(--mid);font-weight:300;line-height:1.5;margin-bottom:7px}
+.tool-row{display:flex;gap:5px;flex-wrap:wrap}
+.tool-chip{font-size:10px;font-weight:600;color:var(--mid);background:var(--tag);padding:2px 8px;border-radius:var(--r)}
+.proj-toggle{display:flex;align-items:flex-start;justify-content:center;padding:18px 0;font-size:20px;color:var(--dim);user-select:none;cursor:pointer;border-left:1px solid var(--rule)}
+.proj-detail{display:none;padding:20px 22px 20px 68px;border-top:1px solid var(--rule);background:var(--bg)}
+.proj-detail.open{display:block}
+.detail-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.detail-box{background:var(--white);border:1px solid var(--rule);border-radius:var(--r);padding:14px 16px}
+.detail-lbl{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:7px}
+.detail-txt{font-size:13px;color:var(--mid);line-height:1.7;font-weight:300}
+.proj-links{display:flex;gap:8px;flex-wrap:wrap}
+.proj-link{font-size:12px;font-weight:600;color:var(--accent);border:1px solid rgba(200,80,42,.3);padding:6px 14px;border-radius:var(--r);text-decoration:none;transition:background .15s}
+.proj-link:hover{background:var(--accent-lt)}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 284px;gap:64px}
+.about-text p{font-size:15px;font-weight:300;color:var(--mid);line-height:1.85;margin-bottom:16px}
+.about-text p strong{color:var(--ink);font-weight:500}
+
+/* CONTACT */
+#contact{text-align:center}
+#contact h2{margin-bottom:12px}
+.contact-sub{font-size:15px;font-weight:300;color:var(--mid);max-width:440px;margin:0 auto 36px;line-height:1.75}
+.contact-btns{display:flex;justify-content:center;gap:9px;flex-wrap:wrap}
+.contact-btn{font-size:13px;font-weight:500;color:var(--ink);border:1px solid var(--rule);padding:10px 24px;border-radius:var(--r);text-decoration:none;transition:all .15s}
+.contact-btn:hover{background:var(--ink);color:var(--white);border-color:var(--ink)}
+
+/* FOOTER */
+footer{padding:22px 44px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--rule)}
+.foot-l{font-family:var(--serif);font-size:14px;color:var(--dim);font-style:italic}
+.foot-r{font-size:12px;color:var(--dim)}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.fade{opacity:0;animation:fadeUp .5s ease forwards}
+.d1{animation-delay:.08s}.d2{animation-delay:.16s}.d3{animation-delay:.24s}.d4{animation-delay:.32s}
+
+/* RESPONSIVE */
+@media(max-width:860px){
+  nav{padding:0 24px}.nav-links{display:none}
+  .wrap{padding:0 24px}
+  .hero-grid,.about-grid{grid-template-columns:1fr}
+  .profile-card{display:none}
+  .exp-grid{grid-template-columns:1fr}
+  .skills-wrap{grid-template-columns:1fr}
+  .detail-cols{grid-template-columns:1fr}
+  .proj-detail{padding-left:22px}
+  footer{flex-direction:column;gap:6px;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-name" href="#hero">Michael Aprat</a>
+  <ul class="nav-links">
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="https://drive.google.com/YOUR-CV-LINK" target="_blank" class="nav-cta">Resume</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <p class="hero-eyebrow fade">Mechanical Engineering Portfolio</p>
+        <h1 class="fade d1">Michael<br>Aprat</h1>
+        <p class="hero-desc fade d2">
+          4th-year Georgia Tech ME student (BS/MS Accelerated) specializing in
+          <strong>FEA&nbsp;/&nbsp;CAE</strong>, <strong>simulation-driven design</strong>,
+          and UAV systems. Active researcher in two GT labs. Targeting internships in
+          <strong>defense, aerospace, and automotive</strong> engineering.
+          Open to relocate anywhere in the US.
+        </p>
+        <div class="hero-btns fade d3">
+          <a class="btn btn-dark" href="#projects">View Projects</a>
+          <a class="btn btn-outline" href="https://drive.google.com/YOUR-CV-LINK" target="_blank">Download CV</a>
+          <a class="btn btn-outline" href="https://drive.google.com/YOUR-PORTFOLIO-PDF-LINK" target="_blank">Portfolio PDF</a>
+        </div>
+      </div>
+      <div class="profile-card fade d3">
+        <div class="profile-card-head">Profile</div>
+        <div class="profile-row"><span class="pk">Degree</span><span class="pv">B.S./M.S. Mech. Eng.</span></div>
+        <div class="profile-row"><span class="pk">University</span><span class="pv">Georgia Tech</span></div>
+        <div class="profile-row"><span class="pk">Graduating</span><span class="pv">Dec 2026 (BS)</span></div>
+        <div class="profile-row"><span class="pk">GPA</span><span class="pv">3.75 / 4.00</span></div>
+        <div class="profile-row"><span class="pk">Location</span><span class="pv">Atlanta, GA</span></div>
+        <div class="profile-row"><span class="pk">Targeting</span><span class="pv">Defense · Aero · Auto</span></div>
+        <div class="profile-row"><span class="pk">Languages</span><span class="pv">EN · AR · FR</span></div>
+        <div class="profile-row"><span class="pk">Status</span><span class="pv open">Open — Internship</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Research &amp; Experience</h2></div>
+    <div class="exp-grid">
+      <div class="exp-card">
+        <div class="exp-org">AREAL Lab — Georgia Tech</div>
+        <div class="exp-role">Undergraduate Researcher</div>
+        <div class="exp-date">Jan 2026 — Present</div>
+        <div class="exp-desc">UAV-integrated RF system for wildlife tracking with MOTUS. Custom antenna mount in SolidWorks. Achieved 80–100 ft detection of 166 MHz NanoTag transmitters. Reduced vibration-induced signal dropouts by 20–30%.</div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-org">CASPaR Lab — Georgia Tech</div>
+        <div class="exp-role">Undergraduate Researcher</div>
+        <div class="exp-date">Jan 2026 — Present</div>
+        <div class="exp-desc">Thermal cycling and bending tests on 40+ Boeing-funded biodegradable RF boards. Stress–strain characterization of DuPont 5025 traces on Kapton. Results informing Boeing avionics development.</div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-org">Sidara</div>
+        <div class="exp-role">Mechanical Engineering Intern</div>
+        <div class="exp-date">Jun 2025 — Jul 2025</div>
+        <div class="exp-desc">Thermal load analyses for 1000+ m² villas using HAP 5.1. Validated cooling loads against ASHRAE standards. 35+ hrs Revit training supporting MEP system integration.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Technical Skills</h2></div>
+    <div class="skills-wrap">
+      <div class="skill-row"><span class="skill-name">SolidWorks</span><div class="skill-right"><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div></div><span class="skill-level">Adv</span></div></div>
+      <div class="skill-row"><span class="skill-name">MATLAB / Simulink</span><div class="skill-right"><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div></div><span class="skill-level">Adv</span></div></div>
+      <div class="skill-row"><span class="skill-name">Siemens NX / CAE</span><div class="skill-right"><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip"></div></div><span class="skill-level">Adv</span></div></div>
+      <div class="skill-row"><span class="skill-name">FEA / Structural Sim</span><div class="skill-right"><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip"></div></div><span class="skill-level">Adv</span></div></div>
+      <div class="skill-row"><span class="skill-name">GD&amp;T / Machine Design</span><div class="skill-right"><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip"></div></div><span class="skill-level">Adv</span></div></div>
+      <div class="skill-row"><span class="skill-name">PID / Control Systems</span><div class="skill-right"><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip"></div></div><span class="skill-level">Adv</span></div></div>
+      <div class="skill-row"><span class="skill-name">3D Printing / Fabrication</span><div class="skill-right"><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip"></div></div><span class="skill-level">Adv</span></div></div>
+      <div class="skill-row"><span class="skill-name">Arduino / Embedded</span><div class="skill-right"><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip"></div><div class="pip"></div></div><span class="skill-level">Int</span></div></div>
+      <div class="skill-row"><span class="skill-name">Creo Parametric</span><div class="skill-right"><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip"></div><div class="pip"></div></div><span class="skill-level">Int</span></div></div>
+      <div class="skill-row"><span class="skill-name">Python / NI LabVIEW</span><div class="skill-right"><div class="pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip"></div><div class="pip"></div></div><span class="skill-level">Int</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Selected Projects</h2></div>
+    <div class="filter-bar">
+      <button class="filt active" onclick="filterProj('all',this)">All</button>
+      <button class="filt" onclick="filterProj('fea',this)">FEA / CAE</button>
+      <button class="filt" onclick="filterProj('cad',this)">CAD</button>
+      <button class="filt" onclick="filterProj('sim',this)">Simulation</button>
+      <button class="filt" onclick="filterProj('build',this)">Prototyping</button>
+    </div>
+    <div class="proj-list" id="projList">
+
+      <div class="proj-item" data-cat="fea">
+        <div class="proj-summary" onclick="toggleProj(this.parentElement)">
+          <div class="proj-n">01</div>
+          <div class="proj-body">
+            <div class="proj-header"><span class="proj-title">FPV Fixed-Wing UAV — Payload System &amp; Structural FEA</span><span class="badge badge-wip">In Progress</span></div>
+            <div class="proj-tag">Siemens NX · 560×560 mm / 4–5 kg · wing cantilever FEA · Al 6061-T6 · Jan 2026 – Present</div>
+            <div class="tool-row"><span class="tool-chip">Siemens NX</span><span class="tool-chip">FEA</span><span class="tool-chip">SolidWorks</span><span class="tool-chip">NX CAE</span></div>
+          </div>
+          <div class="proj-toggle">+</div>
+        </div>
+        <div class="proj-detail">
+          <div class="detail-cols">
+            <div class="detail-box"><div class="detail-lbl">Problem</div><div class="detail-txt">Designed a modular payload system for a fixed-wing FPV UAV in Siemens NX (prototyped in SolidWorks), constrained to a 560×560 mm footprint and 4–5 kg total mass. Structural FEA on the wing cantilever assessed bending stress and deflection limits under aerodynamic loading.</div></div>
+            <div class="detail-box"><div class="detail-lbl">Current Status</div><div class="detail-txt">SolidWorks prototype achieved, excluding the payload system. Future steps include Siemens NX translation, FEA mesh analysis, and physical build of the UAV.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-item" data-cat="cad">
+        <div class="proj-summary" onclick="toggleProj(this.parentElement)">
+          <div class="proj-n">02</div>
+          <div class="proj-body">
+            <div class="proj-header"><span class="proj-title">VW Beetle — Parametric Surface Modeling (Siemens NX)</span><span class="badge badge-done">Complete</span></div>
+            <div class="proj-tag">Class-A surfaces · volumetric &amp; reflection analysis · G2 body continuity · Jan–Mar 2026</div>
+            <div class="tool-row"><span class="tool-chip">Siemens NX</span><span class="tool-chip">Surface Modeling</span><span class="tool-chip">Reflection Analysis</span></div>
+          </div>
+          <div class="proj-toggle">+</div>
+        </div>
+        <div class="proj-detail">
+          <div class="detail-cols">
+            <div class="detail-box"><div class="detail-lbl">Problem</div><div class="detail-txt">Developed parametric surface models of a VW Beetle in Siemens NX, constructing body panels, fenders, and wheel assemblies as Class-A surfaces. Conducted volumetric and surface reflection analyses to evaluate geometric continuity.</div></div>
+            <div class="detail-box"><div class="detail-lbl">Outcome</div><div class="detail-txt">G2 continuity achieved on the car body. G1 continuity achieved on fenders, wheels, and other parts.</div></div>
+          </div>
+          <div class="proj-links"><a class="proj-link" href="https://drive.google.com/file/d/1DAgeorMa9Zwi8AZwWgCWB3NxZaB-o93P/view?usp=drive_link" target="_blank">View Project Report (PDF) →</a></div>
+        </div>
+      </div>
+
+      <div class="proj-item" data-cat="cad">
+        <div class="proj-summary" onclick="toggleProj(this.parentElement)">
+          <div class="proj-n">03</div>
+          <div class="proj-body">
+            <div class="proj-header"><span class="proj-title">Fan Support Strut — Machine Design, GD&amp;T &amp; Stress Analysis</span><span class="badge badge-done">Complete</span></div>
+            <div class="proj-tag">80 kN·mm torque · 1.5×3" steel strut · bending &amp; torsion · GD&amp;T · FOS = 1.75 · Feb–Mar 2026</div>
+            <div class="tool-row"><span class="tool-chip">Machine Design</span><span class="tool-chip">GD&amp;T</span><span class="tool-chip">SolidWorks</span><span class="tool-chip">Hand Calcs</span></div>
+          </div>
+          <div class="proj-toggle">+</div>
+        </div>
+        <div class="proj-detail">
+          <div class="detail-cols">
+            <div class="detail-box"><div class="detail-lbl">Problem</div><div class="detail-txt">Designed a steel fan support strut and pin system to transmit 80 kN·mm torque from a motor driving a 30,000 CFM fan. Sized a 1.5×3" vertical steel strut and selected 0.375" pins; analyzed peak bending stress, torsional stress, and deflection under combined loading.</div></div>
+            <div class="detail-box"><div class="detail-lbl">Outcome</div><div class="detail-txt">Validated against allowable stress limits with FOS = 1.75. SolidWorks assembly with GD&amp;T tolerances on pin–hole fits ensuring functional clearance under thermal and load cycling.</div></div>
+          </div>
+          <div class="proj-links"><a class="proj-link" href="https://drive.google.com/file/d/1lYtEExCkw0S9eyA9dWeEN_cq9ieybsGq/view?usp=drive_link" target="_blank">View Design Report (PDF) →</a></div>
+        </div>
+      </div>
+
+      <div class="proj-item" data-cat="build">
+        <div class="proj-summary" onclick="toggleProj(this.parentElement)">
+          <div class="proj-n">04</div>
+          <div class="proj-body">
+            <div class="proj-header"><span class="proj-title">Competition Robot — Mechanical Design &amp; Slider-Crank</span><span class="badge badge-done">Complete</span></div>
+            <div class="proj-tag">Rubber-band slider-crank in 2×3" box · Arduino · 95%+ score · Aug–Dec 2025</div>
+            <div class="tool-row"><span class="tool-chip">SolidWorks</span><span class="tool-chip">Arduino</span><span class="tool-chip">Mechanism Design</span><span class="tool-chip">3D Printing</span></div>
+          </div>
+          <div class="proj-toggle">+</div>
+        </div>
+        <div class="proj-detail">
+          <div class="detail-cols">
+            <div class="detail-box"><div class="detail-lbl">Problem</div><div class="detail-txt">Designed task-oriented mechanical subsystems in SolidWorks for a competition robot using Arduino-based control logic. Key deliverable: a rubber-band driven slider-crank mechanism constrained within a 2×3" box to release objects accurately into 3" slots.</div></div>
+            <div class="detail-box"><div class="detail-lbl">Outcome</div><div class="detail-txt">Achieved 95%+ competition points — highest-scoring subsystem. Final geometry balanced stroke length, band tension, and release timing for consistent accuracy.</div></div>
+          </div>
+          <div class="proj-links"><a class="proj-link" href="https://drive.google.com/file/d/1gQhXSHkTzxutPPP_O1rpkatu3OH6JVxW/view?usp=drive_link" target="_blank">View Design Report (PDF) →</a></div>
+        </div>
+      </div>
+
+      <div class="proj-item" data-cat="sim">
+        <div class="proj-summary" onclick="toggleProj(this.parentElement)">
+          <div class="proj-n">05</div>
+          <div class="proj-body">
+            <div class="proj-header"><span class="proj-title">Aircraft Propulsion System Simulation</span><span class="badge badge-done">Complete</span></div>
+            <div class="proj-tag">Nonlinear throttle-to-velocity · Euler &amp; ODE45 · PID · settling 23 s · Aug–Dec 2025</div>
+            <div class="tool-row"><span class="tool-chip">MATLAB</span><span class="tool-chip">ODE45</span><span class="tool-chip">PID</span><span class="tool-chip">Nonlinear Dynamics</span></div>
+          </div>
+          <div class="proj-toggle">+</div>
+        </div>
+        <div class="proj-detail">
+          <div class="detail-cols">
+            <div class="detail-box"><div class="detail-lbl">Problem</div><div class="detail-txt">Modeled nonlinear aircraft propulsion dynamics relating throttle input to aircraft velocity in MATLAB. Implemented Euler integration and ODE45 to evaluate transient response under ramp, step, and triangular throttle inputs. Developed a PID control strategy for velocity regulation.</div></div>
+            <div class="detail-box"><div class="detail-lbl">Outcome</div><div class="detail-txt">Closed-loop PID controller successfully regulated velocity against all three input profiles. Settling time = 23 s; settling value = 990 m/s.</div></div>
+          </div>
+          <div class="proj-links"><a class="proj-link" href="https://drive.google.com/file/d/1TsYlVcBEsp3qtUVrxypA3F-9cn2O95Y9/view?usp=drive_link" target="_blank">View Full Report (PDF) →</a></div>
+        </div>
+      </div>
+
+      <div class="proj-item" data-cat="sim">
+        <div class="proj-summary" onclick="toggleProj(this.parentElement)">
+          <div class="proj-n">06</div>
+          <div class="proj-body">
+            <div class="proj-header"><span class="proj-title">Closed-Loop Propofol Drug Delivery Control System</span><span class="badge badge-done">Complete</span></div>
+            <div class="proj-tag">SysID · lead-lag + PID · settling 466 s · 15.9% overshoot · +19.6° phase margin · Aug–Dec 2024</div>
+            <div class="tool-row"><span class="tool-chip">MATLAB</span><span class="tool-chip">Simulink</span><span class="tool-chip">PID</span><span class="tool-chip">Lead-Lag</span><span class="tool-chip">System ID</span></div>
+          </div>
+          <div class="proj-toggle">+</div>
+        </div>
+        <div class="proj-detail">
+          <div class="detail-cols">
+            <div class="detail-box"><div class="detail-lbl">Problem</div><div class="detail-txt">Performed system identification to derive a transfer function model of an open-loop propofol delivery plant. Designed a closed-loop control system in MATLAB/Simulink using lead-lag compensators and PID controllers to regulate depth of anesthesia.</div></div>
+            <div class="detail-box"><div class="detail-lbl">Outcome</div><div class="detail-txt">Settling time 466 s, 15.9% overshoot, 2% steady-state error — significant improvement over open-loop baseline. Lead-lag compensators improved phase margin by 19.6°.</div></div>
+          </div>
+          <div class="proj-links"><a class="proj-link" href="https://drive.google.com/file/d/10qFXAxOdEDOV1nDDyzrMWHRq5Yr57L9y/view?usp=drive_link" target="_blank">View Full Report (PDF) →</a></div>
+        </div>
+      </div>
+
+      <div class="proj-item" data-cat="cad">
+        <div class="proj-summary" onclick="toggleProj(this.parentElement)">
+          <div class="proj-n">07</div>
+          <div class="proj-body">
+            <div class="proj-header"><span class="proj-title">Piston Motor — CAD Design &amp; Motion Simulation</span><span class="badge badge-done">Complete</span></div>
+            <div class="proj-tag">Multi-part assembly in Siemens NX · full crank cycle motion simulation · Feb 2026</div>
+            <div class="tool-row"><span class="tool-chip">Siemens NX</span><span class="tool-chip">Motion Simulation</span><span class="tool-chip">Assembly Design</span></div>
+          </div>
+          <div class="proj-toggle">+</div>
+        </div>
+        <div class="proj-detail">
+          <div class="detail-cols">
+            <div class="detail-box"><div class="detail-lbl">Problem</div><div class="detail-txt">Designed a piston motor assembly in Siemens NX including crankshaft, connecting rod, piston, and cylinder geometry. Set up and ran a full motion simulation of the crank cycle to validate kinematic behavior and joint constraints.</div></div>
+            <div class="detail-box"><div class="detail-lbl">Outcome</div><div class="detail-txt">Motion simulation confirmed correct kinematic behavior across the full crank cycle. All joint constraints validated with no interference detected.</div></div>
+          </div>
+          <div class="proj-links"><a class="proj-link" href="https://drive.google.com/file/d/1pNu7wPrxtcD-1cRyPDVGjjRES1D43_Qf/view?usp=drive_link" target="_blank">Watch Motion Simulation (MP4) →</a></div>
+        </div>
+      </div>
+
+      <div class="proj-item" data-cat="build">
+        <div class="proj-summary" onclick="toggleProj(this.parentElement)">
+          <div class="proj-n">08</div>
+          <div class="proj-body">
+            <div class="proj-header"><span class="proj-title">BuzzCard-Integrated Solar-Powered Bike Rack</span><span class="badge badge-done">Complete</span></div>
+            <div class="proj-tag">Solar + BuzzCard access · SolidWorks campus render · 3D-printed prototype · Aug–Dec 2025</div>
+            <div class="tool-row"><span class="tool-chip">SolidWorks</span><span class="tool-chip">3D Printing</span><span class="tool-chip">Concept Design</span><span class="tool-chip">DFM</span></div>
+          </div>
+          <div class="proj-toggle">+</div>
+        </div>
+        <div class="proj-detail">
+          <div class="detail-cols">
+            <div class="detail-box"><div class="detail-lbl">Problem</div><div class="detail-txt">Designed a campus bike rack integrating solar panel power generation and BuzzCard access control, addressing structural, sustainability, and usability requirements. Produced a small-scale 3D-printed prototype to validate the concept.</div></div>
+            <div class="detail-box"><div class="detail-lbl">Outcome</div><div class="detail-txt">Functional prototype demonstrated the integrated concept. Design also rendered in SolidWorks in a realistic campus deployment scenario.</div></div>
+          </div>
+          <div class="proj-links">
+            <a class="proj-link" href="https://drive.google.com/file/d/130yCePpvdVMUx3ey4ZGiedloSGLsqtok/view?usp=drive_link" target="_blank">View Presentation (PDF) →</a>
+            <a class="proj-link" href="https://drive.google.com/file/d/1FniThrA79J2M4LH0CjnMNBn0TuM111lk/view?usp=drive_link" target="_blank">View Full Report (PDF) →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-item" data-cat="build">
+        <div class="proj-summary" onclick="toggleProj(this.parentElement)">
+          <div class="proj-n">09</div>
+          <div class="proj-body">
+            <div class="proj-header"><span class="proj-title">Cultural Object — Lebanese Tea Cup Prototype</span><span class="badge badge-done">Complete</span></div>
+            <div class="proj-tag">5-part SolidWorks model · interference &amp; transition fits · GD&amp;T · 3D-printed · Aug–Dec 2025</div>
+            <div class="tool-row"><span class="tool-chip">SolidWorks</span><span class="tool-chip">GD&amp;T</span><span class="tool-chip">3D Printing</span></div>
+          </div>
+          <div class="proj-toggle">+</div>
+        </div>
+        <div class="proj-detail">
+          <div class="detail-cols">
+            <div class="detail-box"><div class="detail-lbl">Problem</div><div class="detail-txt">Modeled a Lebanese Tea Cup in SolidWorks as a 5-part parametric CAD model. Fabricated a small-scale 3D-printed prototype to validate geometry and assess printability.</div></div>
+            <div class="detail-box"><div class="detail-lbl">Outcome</div><div class="detail-txt">All 5 parts fit together accurately using GD&amp;T parameters — interference fit for the base and transition fit for the cup lock.</div></div>
+          </div>
+          <div class="proj-links"><a class="proj-link" href="https://docs.google.com/presentation/d/19oywrKk2mvmhw71HJyC1ATm00fUtd7rU/edit?usp=drive_link&ouid=111577976696370187566&rtpof=true&sd=true" target="_blank">View Presentation (PPTX) →</a></div>
+        </div>
+      </div>
+
+      <div class="proj-item" data-cat="build">
+        <div class="proj-summary" onclick="toggleProj(this.parentElement)">
+          <div class="proj-n">10</div>
+          <div class="proj-body">
+            <div class="proj-header"><span class="proj-title">Chebyshev Lambda v2 — 4-Bar Walking Mechanism</span><span class="badge badge-done">Complete</span></div>
+            <div class="proj-tag">SolidWorks motion analysis · MotionGen · 3D-printed prototype · gait validation · Jan–Mar 2024</div>
+            <div class="tool-row"><span class="tool-chip">SolidWorks</span><span class="tool-chip">Motion Analysis</span><span class="tool-chip">3D Printing</span><span class="tool-chip">Kinematics</span></div>
+          </div>
+          <div class="proj-toggle">+</div>
+        </div>
+        <div class="proj-detail">
+          <div class="detail-cols">
+            <div class="detail-box"><div class="detail-lbl">Problem</div><div class="detail-txt">Sourced a Chebyshev lambda v2 four-bar walking linkage, modeled it in SolidWorks, and fabricated a 3D-printed prototype. Ran motion analysis in SolidWorks and MotionGen to simulate foot path trajectory and joint kinematics.</div></div>
+            <div class="detail-box"><div class="detail-lbl">Outcome</div><div class="detail-txt">3D-printed prototype successfully replicated the walking gait. SolidWorks motion simulation confirmed the characteristic Chebyshev foot path.</div></div>
+          </div>
+          <div class="proj-links">
+            <a class="proj-link" href="https://docs.google.com/presentation/d/1fbUyMAmEQbVO1_VIXv3MicHoLsdeZirf/edit?usp=drive_link&ouid=111577976696370187566&rtpof=true&sd=true" target="_blank">View Presentation (PPTX) →</a>
+            <a class="proj-link" href="https://docs.google.com/document/d/1d5aRczJBzSqGOjMfNR8SZD1vIEy2HwGN/edit?usp=drive_link&ouid=111577976696370187566&rtpof=true&sd=true" target="_blank">View Full Report (DOCX) →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">04</span><h2>About</h2></div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm <strong>Michael Aprat</strong>, a 4th-year Mechanical Engineering student at <strong>Georgia Institute of Technology</strong> (BS/MS Accelerated Program), graduating December 2026 with a 3.75 GPA. I'm currently an active researcher in two GT labs — AREAL (UAV systems) and CASPaR (Boeing-funded flexible electronics) — alongside coursework in FEA/CAE, machine design, and control systems.</p>
+        <p>My strongest technical area is <strong>structural FEA/CAE in Siemens NX</strong>, paired with dynamics simulation and control system design in MATLAB/Simulink. I'm equally comfortable sizing a machine component with hand calculations and GD&amp;T tolerances as I am building a closed-loop PID controller or integrating hardware onto a UAV.</p>
+        <p>Outside engineering I train for <strong>marathons</strong>, alpine ski, and swim. Trilingual in English, Arabic, and French. Targeting internships in <strong>defense, aerospace, and automotive</strong> engineering. Open to relocate anywhere in the US.</p>
+      </div>
+      <div>
+        <div class="profile-card">
+          <div class="profile-card-head">Profile</div>
+          <div class="profile-row"><span class="pk">Degree</span><span class="pv">B.S./M.S. Mech. Eng.</span></div>
+          <div class="profile-row"><span class="pk">University</span><span class="pv">Georgia Tech</span></div>
+          <div class="profile-row"><span class="pk">Graduating</span><span class="pv">Dec 2026 (BS)</span></div>
+          <div class="profile-row"><span class="pk">GPA</span><span class="pv">3.75 / 4.00</span></div>
+          <div class="profile-row"><span class="pk">Location</span><span class="pv">Atlanta, GA</span></div>
+          <div class="profile-row"><span class="pk">Interests</span><span class="pv">F1 · Skiing · Marathons</span></div>
+          <div class="profile-row"><span class="pk">Languages</span><span class="pv">EN · AR · FR</span></div>
+          <div class="profile-row"><span class="pk">Status</span><span class="pv open">Open — Internship</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-head" style="justify-content:center"><span class="sec-num">05</span><h2>Get in Touch</h2></div>
+    <p class="contact-sub">Open to internship roles in defense, aerospace, automotive, and high-performance mechanical engineering. Happy to relocate anywhere in the US.</p>
+    <div class="contact-btns">
+      <a class="contact-btn" href="mailto:michaelaprat@gmail.com">Email</a>
+      <a class="contact-btn" href="https://linkedin.com/in/michaelaprat" target="_blank">LinkedIn</a>
+      <a class="contact-btn" href="https://drive.google.com/YOUR-CV-LINK" target="_blank">Download CV</a>
+      <a class="contact-btn" href="https://drive.google.com/YOUR-PORTFOLIO-PDF-LINK" target="_blank">Portfolio PDF</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="foot-l">Michael Aprat</span>
+  <span class="foot-r">Georgia Tech · Mechanical Engineering · 2026</span>
+</footer>
+
+<script>
+function toggleProj(item){
+  const detail=item.querySelector('.proj-detail');
+  const btn=item.querySelector('.proj-toggle');
+  const isOpen=detail.classList.contains('open');
+  document.querySelectorAll('.proj-detail.open').forEach(d=>d.classList.remove('open'));
+  document.querySelectorAll('.proj-toggle').forEach(b=>b.textContent='+');
+  document.querySelectorAll('.proj-item.expanded').forEach(i=>i.classList.remove('expanded'));
+  if(!isOpen){detail.classList.add('open');btn.textContent='−';item.classList.add('expanded');}
+}
+function filterProj(cat,btn){
+  document.querySelectorAll('.filt').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.proj-item').forEach(item=>{
+    item.style.display=(cat==='all'||item.dataset.cat===cat)?'':'none';
+  });
+}
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='none';}});
+},{threshold:0.06});
+document.querySelectorAll('.proj-item,.skill-row,.exp-card').forEach(el=>{
+  el.style.opacity='0';el.style.transform='translateY(10px)';
+  el.style.transition='opacity .4s ease,transform .4s ease';
+  obs.observe(el);
+});
+</script>
+</body>
+</html>
